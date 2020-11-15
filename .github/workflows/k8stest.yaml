@@ -10,6 +10,5 @@ jobs:
         shell: bash
         env:
           KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
-      - run: 'alias kl="KUBECONFIG=kube_config.yaml kubectl"'
-      - run: 'kl apply -f redis-master-deployment.yaml'
-      - run: 'kl apply -f redis-master-service.yaml'
+      - run: 'KUBECONFIG=kube_config.yaml kubectl apply -f redis-master-deployment.yaml'
+      - run: 'KUBECONFIG=kube_config.yaml kubectl apply -f redis-master-service.yaml'
