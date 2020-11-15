@@ -1,0 +1,15 @@
+name: apply k8s
+
+on:
+  workflow_dispatch:
+jobs:
+  do_the_thing:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo "$KUBE_CONFIG" > kube_config.yaml'
+        shell: bash
+        env:
+          KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
+      - run: 'alias kl="KUBECONFIG=kube_config.yaml kubectl"'
+      - run: 'kl apply -f redis-master-deployment.yaml'
+      - run: 'kl apply -f redis-master-service.yaml'
