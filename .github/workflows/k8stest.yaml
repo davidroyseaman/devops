@@ -6,6 +6,7 @@ jobs:
   do_the_thing:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - run: 'echo "$KUBE_CONFIG" > kube_config.yaml'
         shell: bash
         env:
