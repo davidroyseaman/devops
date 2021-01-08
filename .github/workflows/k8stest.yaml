@@ -16,7 +16,4 @@ jobs:
           KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
       - run: 'kubectl apply -f redis-master-deployment.yaml'
       - run: 'kubectl apply -f redis-master-service.yaml'
-  one_more_thing:
-    runs-on: ubuntu-latest
-    steps:
-      - run: 'ls -la'
+
