@@ -8,13 +8,15 @@
 - kl port-forward service/redis-master 7000:6379
 - redis-cli -p 7000
 
-
+## Github packages container support beta
+- https://docs.github.com/en/free-pro-team@latest/packages/guides/enabling-improved-container-support
+- https://docs.github.com/en/free-pro-team@latest/packages/guides/using-github-packages-with-github-actions
 
 ## TODO list
 - [x] create repository
 - [x] github workflows
-- [ ] build docker images (for static nginx site)
-- [ ] docker registry k8s yaml
+- [x] build docker images (for static nginx site)
+- [-] docker registry k8s yaml (using github registry for now)
 - [ ] push docker image to private registry
 - [ ] run a pod that pulls from private registry
 - [ ] linode load balancer?
