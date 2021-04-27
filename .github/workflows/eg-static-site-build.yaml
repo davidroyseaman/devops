@@ -57,19 +57,20 @@ jobs:
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
 
+      - name: Store kubeconfig for kubectl
+        run: 'echo "$KUBE_CONFIG" > kube_config.yaml'
+        shell: bash
+        env:
+          KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
+
       - name: Create k8s imagePullSecrets
         # --docker-email=dsx@whatdo.dsx
         run: |
           kubectl create secret docker-registry ghcr-docker \
             --docker-server=ghcr.io \
             --docker-username=${{ github.actor }} \
-            --docker-auth=${{ secrets.GITHUB_TOKEN }}
+            --docker-password=${{ secrets.GITHUB_TOKEN }}
 
-      - name: Store kubeconfig for kubectl
-        run: 'echo "$KUBE_CONFIG" > kube_config.yaml'
-        shell: bash
-        env:
-          KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
       - name: apply deployment to k8s
         working-directory: eg-static-site
         run: 'kubectl apply -f deployment.k8s.yaml'
