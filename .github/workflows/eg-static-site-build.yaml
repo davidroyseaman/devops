@@ -41,21 +41,32 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Push image
+        # run: |
+        #   IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+
+        #   # Change all uppercase to lowercase
+        #   IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+        #   # Strip git ref prefix from version
+        #   VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+        #   # Strip "v" prefix from tag name
+        #   [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+        #   # Use Docker `latest` tag convention
+        #   [ "$VERSION" == "master" ] && VERSION=latest
+        #   echo IMAGE_ID=$IMAGE_ID
+        #   echo VERSION=$VERSION
+        #   docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+        #   docker push $IMAGE_ID:$VERSION
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
 
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
           # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-          # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-          # Use Docker `latest` tag convention
-          [ "$VERSION" == "master" ] && VERSION=latest
+          IMAGE_TAG=${{ github.sha }}
           echo IMAGE_ID=$IMAGE_ID
-          echo VERSION=$VERSION
-          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:$VERSION
+          echo IMAGE_TAG=$IMAGE_TAG
+          docker tag $IMAGE_NAME $IMAGE_ID:$IMAGE_TAG
+          docker push $IMAGE_ID:$IMAGE_TAG
 
       - name: Store kubeconfig for kubectl
         working-directory: eg-static-site
@@ -75,8 +86,16 @@ jobs:
             --dry-run=true -o yaml \
           | kubectl apply -f -
 
+      # - name: apply deployment to k8s
+      #   working-directory: eg-static-site
+      #   run: 'kubectl apply -f deployment.k8s.yaml'
+
       - name: apply deployment to k8s
         working-directory: eg-static-site
-        run: 'kubectl apply -f deployment.k8s.yaml'
+        run: |
+          yq w deployment.k8s.yaml "spec.template.spec.containers[0].image" $IMAGE_ID:$IMAGE_TAG
+          yq w deployment.k8s.yaml "spec.template.spec.containers[0].image" $IMAGE_ID:$IMAGE_TAG \
+          | kubectl apply -f -
+          
 
 

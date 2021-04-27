@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: eg-static-site # ???
-        image: ghcr.io/davidroyseaman/eg-static-site:latest
+        image: "replaced by build"
         resources:
           requests:
             cpu: 100m
