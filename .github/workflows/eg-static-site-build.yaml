@@ -17,8 +17,8 @@ on:
   pull_request:
 
 env:
-  # TODO: Change variable to your image's name.
-  IMAGE_NAME: image
+  IMAGE_NAME: eg-static-site
+  KUBECONFIG: kube_config.yaml
 
 jobs:
   # Push image to GitHub Packages.
@@ -56,3 +56,22 @@ jobs:
           echo VERSION=$VERSION
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
+
+      - name: Create k8s imagePullSecrets
+        # --docker-email=dsx@whatdo.dsx
+        run: |
+          kubectl create secret docker-registry ghcr-docker \
+            --docker-server=ghcr.io \
+            --docker-username=${{ github.actor }} \
+            --docker-auth=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Store kubeconfig for kubectl
+        run: 'echo "$KUBE_CONFIG" > kube_config.yaml'
+        shell: bash
+        env:
+          KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
+      - name: apply deployment to k8s
+        working-directory: eg-static-site
+        run: 'kubectl apply -f deployment.k8s.yaml'
+
+

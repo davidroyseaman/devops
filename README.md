@@ -1,5 +1,8 @@
 # Scripts for devops related tasks
 
+# Tutorial notes:
+- Make sure user has github packages turned on (https://github.com/<user>?tab=packages)
+
 ## K8s dashboard: https://github.com/kubernetes/dashboard
 - kl proxy
 - chrome: http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/.
@@ -17,7 +20,7 @@
 - [x] github workflows
 - [x] build docker images (for static nginx site)
 - [-] docker registry k8s yaml (using github registry for now)
-- [ ] push docker image to private registry
+- [x] push docker image to private registry
 - [ ] run a pod that pulls from private registry
 - [ ] linode load balancer?
 - [ ] DNS for *.k8s.zk.io -> loadbalancer
