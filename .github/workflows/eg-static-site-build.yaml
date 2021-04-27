@@ -94,6 +94,13 @@ jobs:
       - name: apply deployment to k8s
         working-directory: eg-static-site
         run: |
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+
+          # Change all uppercase to lowercase
+          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+          # Strip git ref prefix from version
+          IMAGE_TAG=${{ github.sha }}
+          
           yq w deployment.k8s.yaml "spec.template.spec.containers[0].image" $IMAGE_ID:$IMAGE_TAG
           yq w deployment.k8s.yaml "spec.template.spec.containers[0].image" $IMAGE_ID:$IMAGE_TAG \
           | kubectl apply -f -
