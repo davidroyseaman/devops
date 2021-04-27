@@ -1,19 +1,19 @@
-# name: apply k8s
+name: apply k8s
 
-# on:
-#   - workflow_dispatch
-#   - push
-# jobs:
-#   do_the_thing:
-#     runs-on: ubuntu-latest
-#     env:
-#       KUBECONFIG: kube_config.yaml
-#     steps:
-#       - uses: actions/checkout@v2
-#       - run: 'echo "$KUBE_CONFIG" > kube_config.yaml'
-#         shell: bash
-#         env:
-#           KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
-#       - run: 'kubectl apply -f redis-master-deployment.yaml'
-#       - run: 'kubectl apply -f redis-master-service.yaml'
+on:
+  - workflow_dispatch
+  # - push
+jobs:
+  do_the_thing:
+    runs-on: ubuntu-latest
+    env:
+      KUBECONFIG: kube_config.yaml
+    steps:
+      - uses: actions/checkout@v2
+      - run: 'echo "$KUBE_CONFIG" > kube_config.yaml'
+        shell: bash
+        env:
+          KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
+      - run: 'kubectl apply -f redis-master-deployment.yaml'
+      - run: 'kubectl apply -f redis-master-service.yaml'
 
