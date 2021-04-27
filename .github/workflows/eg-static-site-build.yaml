@@ -58,12 +58,14 @@ jobs:
           docker push $IMAGE_ID:$VERSION
 
       - name: Store kubeconfig for kubectl
+        working-directory: eg-static-site
         run: 'echo "$KUBE_CONFIG" > kube_config.yaml'
         shell: bash
         env:
           KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
 
       - name: Create k8s imagePullSecrets
+        working-directory: eg-static-site
         # --docker-email=dsx@whatdo.dsx
         run: |
           kubectl create secret docker-registry ghcr-docker \
