@@ -31,6 +31,6 @@ jobs:
       - name: Build image
         working-directory: ${{ matrix.folder }}
         run: |
-          echo hi
+          echo ${{ matrix.folder }}
           ls -la
           pwd
