@@ -30,5 +30,6 @@ jobs:
 
       - name: Build image
         working-directory: folder
-        run: pwd
-        
+        run: |
+          echo hi
+          ls -la
