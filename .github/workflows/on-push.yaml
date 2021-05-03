@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        folder: [cert-manager, eg-static-site]
+        folder: ["cert-manager", "eg-static-site"]
     steps:
       # - uses: actions/setup-node@v1
       #   with:
