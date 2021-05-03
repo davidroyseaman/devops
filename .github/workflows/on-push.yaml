@@ -18,20 +18,44 @@ env:
   DSXWAT: dsx
 
 jobs:
-  test-matrix:
+  infrastructure:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        folder: [cert-manager, eg-static-site]
+        folder: [nginx-ingress, cert-manager]
     steps:
       - uses: actions/checkout@v2
-      # - uses: actions/setup-node@v1
-      #   with:
-      #     node-version: ${{ matrix.node }}
 
-      - name: Build image
+      - name: Build step
         working-directory: ${{ matrix.folder }}
         run: |
-          echo ${{ matrix.folder }}
-          ls -la
-          pwd
+          echo ${{ matrix.folder }}: Build
+          echo ./build
+
+      - name: Deploy step
+        working-directory: ${{ matrix.folder }}
+        run: |
+          echo ${{ matrix.folder }}: Deploy
+          echo ./deploy
+
+
+  deployments:
+    needs: infrastructure
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        folder: [eg-static-site, eg-rest-server]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build step
+        working-directory: ${{ matrix.folder }}
+        run: |
+          echo ${{ matrix.folder }}: Build
+          echo ./build
+
+      - name: Deploy step
+        working-directory: ${{ matrix.folder }}
+        run: |
+          echo ${{ matrix.folder }}: Deploy
+          echo ./deploy
