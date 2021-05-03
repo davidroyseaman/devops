@@ -29,7 +29,8 @@ jobs:
       #     node-version: ${{ matrix.node }}
 
       - name: Build image
-        working-directory: folder
+        working-directory: ${{ folder }}
         run: |
           echo hi
           ls -la
+          pwd
