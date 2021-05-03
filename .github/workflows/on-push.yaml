@@ -1,0 +1,34 @@
+name: on-push # dsx rename
+
+on:
+  workflow_dispatch:
+  push:
+    # # Publish `$default-branch` as Docker `latest` image.
+    # branches:
+    #   - $default-branch
+
+    # # Publish `v1.2.3` tags as releases.
+    # tags:
+    #   - v*
+
+  # Run tests for any PRs.
+  pull_request:
+
+env:
+  DSXWAT: dsx
+
+jobs:
+  test-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        folder: [cert-manager, eg-static-site]
+    steps:
+      # - uses: actions/setup-node@v1
+      #   with:
+      #     node-version: ${{ matrix.node }}
+
+      - name: Build image
+        working-directory: folder
+        run: pwd
+        
