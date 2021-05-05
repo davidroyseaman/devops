@@ -51,6 +51,7 @@ spec:
   # - hosts:
   #   - cafe.example.com
   #   secretName: cafe-secret
+  ingressClassName: nginx
   rules:
   - host: eg.k8s.zk.io
     http:
