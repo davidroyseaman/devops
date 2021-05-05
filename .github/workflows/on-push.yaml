@@ -22,6 +22,7 @@ jobs:
   infrastructure:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false # dsx change this maybe
       matrix:
         folder: [nginx-ingress, cert-manager]
     steps:
@@ -44,6 +45,7 @@ jobs:
     needs: infrastructure
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false # dsx change this maybe
       matrix:
         folder: [eg-static-site, eg-rest-server]
     steps:
