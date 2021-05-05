@@ -42,7 +42,7 @@ spec:
       # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
       nodePort: 30007
 ---
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: eg-static-site-ingress
@@ -58,7 +58,5 @@ spec:
       - pathType: Prefix
         path: "/"
         backend:
-          service:
-            name: eg-static-site-service
-            port:
-              number: 80
+          serviceName: eg-static-site-service
+          servicePort: 80
