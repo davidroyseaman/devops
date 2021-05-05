@@ -17,6 +17,7 @@ on:
 env:
   DSXWAT: dsx
   DOCKER_REGISTRY_URL_PREFIX: ghcr.io/${{ github.repository_owner }}
+  KUBECONFIG: kube_config.yaml
 jobs:
   infrastructure:
     runs-on: ubuntu-latest
@@ -59,15 +60,19 @@ jobs:
         env:
           KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
 
+      - name: Test kubectl
+        working-directory: ${{ matrix.folder }}
+        run: 'kubectl get pods'
+
       - name: Create k8s imagePullSecrets
-        working-directory: eg-static-site
+        working-directory: ${{ matrix.folder }}
         # --docker-email=dsx@whatdo.dsx
         run: |
           kubectl create secret docker-registry ghcr-docker \
             --docker-server=ghcr.io \
             --docker-username=${{ github.actor }} \
             --docker-password=${{ secrets.GITHUB_TOKEN }} \
-            --dry-run=true -o yaml \
+            --dry-run=client -o yaml \
           | kubectl apply -f -
 
       - name: Build step
