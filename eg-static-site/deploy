@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+IMAGE_NAME=eg-static-site
 IMAGE_ID=$DOCKER_REGISTRY_URL_PREFIX/$IMAGE_NAME
 
 # Change all uppercase to lowercase

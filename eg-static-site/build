@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+IMAGE_NAME=eg-static-site
+
 docker build . --file Dockerfile --tag $IMAGE_NAME
 
 IMAGE_ID=$DOCKER_REGISTRY_URL_PREFIX/$IMAGE_NAME
