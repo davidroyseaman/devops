@@ -55,8 +55,8 @@ spec:
   - host: eg.k8s.zk.io
     http:
       paths:
-      - pathType: Prefix
-        path: "/"
+      - path: "/"
+        # pathType: Prefix
         backend:
           serviceName: eg-static-site-service
           servicePort: 80
