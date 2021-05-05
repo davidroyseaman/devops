@@ -28,6 +28,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Store kubeconfig for kubectl login
+        working-directory: ${{ matrix.folder }}
+        run: 'echo "$KUBE_CONFIG" > kube_config.yaml'
+        shell: bash
+        env:
+          KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
+
       - name: Build step
         working-directory: ${{ matrix.folder }}
         run: |
