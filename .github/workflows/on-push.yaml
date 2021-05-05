@@ -81,10 +81,14 @@ jobs:
         working-directory: ${{ matrix.folder }}
         run: |
           echo ${{ matrix.folder }}: Build
-          [ -f ./build ] && ./build
+          if [ -f "./build" ]; then
+            ./build
+          fi
 
       - name: Deploy step
         working-directory: ${{ matrix.folder }}
         run: |
           echo ${{ matrix.folder }}: Deploy
-          [ -f ./deploy ] && ./deploy
+          if [ -f "./deploy" ]; then
+            ./deploy
+          fi
