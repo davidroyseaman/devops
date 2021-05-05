@@ -32,13 +32,17 @@ jobs:
         working-directory: ${{ matrix.folder }}
         run: |
           echo ${{ matrix.folder }}: Build
-          echo ./build
+          if [ -f "./build" ]; then
+            ./build
+          fi
 
       - name: Deploy step
         working-directory: ${{ matrix.folder }}
         run: |
           echo ${{ matrix.folder }}: Deploy
-          echo ./deploy
+          if [ -f "./deploy" ]; then
+            ./deploy
+          fi
 
 
   deployments:
