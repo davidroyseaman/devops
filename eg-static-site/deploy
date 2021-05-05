@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+IMAGE_ID=$DOCKER_REGISTRY_URL_PREFIX/$IMAGE_NAME
+
+# Change all uppercase to lowercase
+IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+# Strip git ref prefix from version
+IMAGE_TAG=$GITHUB_SHA
+
+yq w deployment.k8s.yaml "spec.template.spec.containers[0].image" $IMAGE_ID:$IMAGE_TAG
+yq w deployment.k8s.yaml "spec.template.spec.containers[0].image" $IMAGE_ID:$IMAGE_TAG \
+| kubectl apply -f -
