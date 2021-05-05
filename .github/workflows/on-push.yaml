@@ -60,9 +60,9 @@ jobs:
         env:
           KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
 
-      - name: Test kubectl
-        working-directory: ${{ matrix.folder }}
-        run: 'kubectl get pods'
+      # - name: Test kubectl
+      #   working-directory: ${{ matrix.folder }}
+      #   run: 'kubectl get pods'
 
       - name: Create k8s imagePullSecrets
         working-directory: ${{ matrix.folder }}
@@ -79,10 +79,10 @@ jobs:
         working-directory: ${{ matrix.folder }}
         run: |
           echo ${{ matrix.folder }}: Build
-          echo ./build
+          [ -f ./build ] && ./build
 
       - name: Deploy step
         working-directory: ${{ matrix.folder }}
         run: |
           echo ${{ matrix.folder }}: Deploy
-          echo ./deploy
+          [ -f ./deploy ] && ./deploy
