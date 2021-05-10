@@ -22,12 +22,13 @@
 - [-] docker registry k8s yaml (using github registry for now)
 - [x] push docker image to private registry
 - [ ] run a pod that pulls from private registry
-- [ ] nginx ingress controller
+- [x] nginx ingress controller
 - [ ] linode load balancer?
 - [ ] DNS for *.k8s.zk.io -> loadbalancer
-- [ ] ingress controller + ingress resources for static site
+- [x] ingress controller + ingress resources for static site
 - [ ] let's encrypt ACME controller thing for ssl
 - [ ] redis rest service as a poc
+- [ ] k8s dashboard
 
 - [ ] terraform
 - [ ] linode terraform provider

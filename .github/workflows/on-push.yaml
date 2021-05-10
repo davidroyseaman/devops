@@ -58,7 +58,7 @@ jobs:
     strategy:
       fail-fast: false # dsx change this maybe
       matrix:
-        folder: [eg-static-site, eg-rest-server]
+        folder: [eg-static-site, eg-rest-server, eg-k8s-dashboard]
     steps:
       - uses: actions/checkout@v2
       - uses: chrisdickinson/setup-yq@latest

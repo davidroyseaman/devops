@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+kubectl apply -f recommended.yaml
+
+kubectl apply -f admin-account.yaml
+
+
+# dsx oof don't log this
+kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
