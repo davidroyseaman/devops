@@ -2,6 +2,8 @@
 
 kubectl apply -f cert-manager-v1.3.0.yml
 
+sleep 10 # dsx better to wait for resource ready
+
 kubectl apply -f letsencrypt-staging.yaml
 
 # kubectl apply -f letsencrypt-prod.yaml

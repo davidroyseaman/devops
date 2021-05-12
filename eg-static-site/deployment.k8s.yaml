@@ -47,7 +47,7 @@ kind: Ingress
 metadata:
   name: eg-static-site-ingress
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    cert-manager.io/cluster-issuer: letsencrypt-staging
 spec:
   tls:
   - hosts:
