@@ -6,7 +6,7 @@ metadata:
 spec:
   acme:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
-    email: your_email_address_here
+    email: ctrlfrk@hotmail.com # dsx
     # Name of the secret that will be created to store the key
     privateKeySecretRef:
       name: letsencrypt-staging
