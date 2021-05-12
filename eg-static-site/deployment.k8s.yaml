@@ -52,6 +52,8 @@ metadata:
     # http:// was upgraded to https:// and had no certificate yet.
     # that auto upgrade is good, but try find out what's causing it
     cert-manager.io/issue-temporary-certificate: "true"
+    # dsx lets just try everything (https://cert-manager.io/docs/faq/acme/)
+    acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   tls:
   - hosts:
