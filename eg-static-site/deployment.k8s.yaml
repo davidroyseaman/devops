@@ -48,6 +48,10 @@ metadata:
   name: eg-static-site-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-staging
+    # dsx investigate: It seems the self check was failing because requesting
+    # http:// was upgraded to https:// and had no certificate yet.
+    # that auto upgrade is good, but try find out what's causing it
+    cert-manager.io/issue-temporary-certificate: true
 spec:
   tls:
   - hosts:
