@@ -46,11 +46,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: eg-static-site-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
 spec:
-  # tls:
-  # - hosts:
-  #   - cafe.example.com
-  #   secretName: cafe-secret
+  tls:
+  - hosts:
+    - eg.k8s.zk.io
+    secretName: eg-static-site-tls-secret
   ingressClassName: nginx
   rules:
   - host: eg.k8s.zk.io

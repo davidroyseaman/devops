@@ -9,7 +9,7 @@ If you're curious you can do a regex search for `^kind:` to jump to all the vari
 
 If you want to update the version, download a new yaml file from the link.
 
-## Configuraiton:
+## Configuration:
 (https://cert-manager.io/docs/configuration/acme/)
 The next step is to set up `issuers` that cert-manager will use to actually get the certificates.
 We are going to be using let's encrypt to get our certificates and it uses ACME to do the challenge/response that proves you own the domain in question.
