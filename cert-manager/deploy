@@ -6,4 +6,4 @@ sleep 10 # dsx better to wait for resource ready
 
 kubectl apply -f letsencrypt-staging.yaml
 
-# kubectl apply -f letsencrypt-prod.yaml
+kubectl apply -f letsencrypt-prod.yaml
