@@ -7,7 +7,7 @@ const uuidv4 = require('uuid/v4')
 // Format:
 // [redis[s]:]//[[user][:password@]][host][:port][/db-number][?db=db-number[&password=bar[&option=value]]]
 
-const client = redis.createClient('redis://redis:6379');
+const client = redis.createClient('redis://redis-master:6379');
 
 const rset = util.promisify(client.set).bind(client);
 const rget = util.promisify(client.get).bind(client);
