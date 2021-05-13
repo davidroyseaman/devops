@@ -32,7 +32,7 @@ app.use(rawParser);
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, GET');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT');
   next();
 });
 
@@ -43,7 +43,7 @@ app.get(collection, async (req, res) => {
 });
 
 app.get(resource, async (req, res) => {
-  // console.log(`get resource ${req.url}`);
+  console.log(`get resource ${req.url}`);
   // await new Promise((resolve) => setTimeout(resolve, 10));
   const data = await rget(req.url);
   res.send(data);
@@ -51,7 +51,7 @@ app.get(resource, async (req, res) => {
 
 
 app.post(collection, async (req, res) => {
-  // console.log(`posted to collection ${req.url}`);
+  console.log(`posted to collection ${req.url}`);
   const id = uuidv4();
   await rsadd(req.url, id);
   await rset(req.url + id, req.body.toString('utf8'));
