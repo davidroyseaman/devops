@@ -2,6 +2,8 @@
 
 IMAGE_NAME=eg-todo-list
 
+npm ci
+
 npx esbuild src/index.jsx --bundle --outfile=build.js --minify --sourcemap
 
 docker build . --file Dockerfile --tag $IMAGE_NAME
