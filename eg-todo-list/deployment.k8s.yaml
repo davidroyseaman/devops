@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eg-todo-list-deployment
+  labels:
+    app: eg-todo-list
+spec:
+  selector:
+    matchLabels:
+      app: eg-todo-list
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eg-todo-list
+    spec:
+      containers:
+      - name: eg-todo-list # ???
+        image: "replaced by build"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 80
+      # imagePullSecrets:
+      # - name: ghcr-docker
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eg-todo-list-service
+spec:
+  # type: NodePort
+  selector:
+    app: eg-todo-list
+  ports:
+      # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
+    - port: 80
+      targetPort: 80
+      # Optional field
+      # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
+      # nodePort: 30007
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: eg-todo-list-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    # dsx investigate: It seems the self check was failing because requesting
+    # http:// was upgraded to https:// and had no certificate yet.
+    # that auto upgrade is good, but try find out what's causing it
+    cert-manager.io/issue-temporary-certificate: "true"
+    # dsx lets just try everything (https://cert-manager.io/docs/faq/acme/)
+    acme.cert-manager.io/http01-edit-in-place: "true"
+spec:
+  tls:
+  - hosts:
+    - eg.k8s.zk.io
+    secretName: eg-todo-list-tls-secret
+  ingressClassName: nginx
+  rules:
+  - host: todo.k8s.zk.io
+    http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: eg-todo-list-service
+            port:
+              number: 80

@@ -1,0 +1,31 @@
+???
+kl -n redisns get pod redis-master-5b84bb48db-w4ssw --template='{{(index (index .spec.containers 0).ports 0).containerPort}}{{"\n"}}'
+
+kl -n redisns get pods
+
+
+
+redis-cli -p 30379 -h 10.128.0.1
+
+port-forward pods/redis-master-6b54579d85-zqxxp 7000:6379
+
+
+
+localhost:8002/api/v1/proxy/namespaces/default/services/redis-master:redis/
+
+
+port-forward service/redis-master 6379:6379
+
+kl -n nginx-ingress exec nginx-ingress-s9m2v -it -- /bin/bash
+kl exec eg-static-site-deployment-766748f7c-dbnzj -it -- /bin/bash
+
+
+kl -n kubernetes-dashboard get secret $(kl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
+
+
+
+kl get pods --all-namespaces
+
+kl -n kube-system logs calico-kube-controllers-67f4497596-gnn7l
+
+kl -n kube-system describe pod kube-proxy-q5tdl
