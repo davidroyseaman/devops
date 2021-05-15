@@ -19,7 +19,7 @@ client.select(1);
 // client.keys('*', (...args) => console.log({ args }));
 
 const rawParser = bodyParser.raw({
-  limit: '10kb',
+  limit: '1000kb',
   type: '*/*',
 });
 
