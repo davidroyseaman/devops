@@ -57,7 +57,7 @@ metadata:
 spec:
   tls:
   - hosts:
-    - eg.k8s.zk.io
+    - todo.k8s.zk.io
     secretName: eg-todo-list-tls-secret
   ingressClassName: nginx
   rules:
