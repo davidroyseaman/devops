@@ -1,3 +1,17 @@
+# Instructions (v1)
+
+1. Create a kubernetes cluster (linode/aws/gcloud/etc)
+2. Point a wildcard subdomain at it (single node/round-robin dns/loadbalancer)
+3. Copy the kubeconfig into a github secret
+4. (Make a read-packages PAT and copy that into a github secret)
+5. Fork the repo
+6. Set the domain (dsx edit repo or github secret?
+7. Push and check
+8. Switch to letsencrypt prod for real certs
+9. Push and check
+
+
+
 # Scripts for devops related tasks
 
 # Tutorial notes:
@@ -16,6 +30,9 @@
 - https://docs.github.com/en/free-pro-team@latest/packages/guides/using-github-packages-with-github-actions
 
 ## TODO list
+- [ ] Private packages (with/without PAT)
+- [ ] Switch ingress controllers
+- [ ] Make domain name easier to change
 - [x] create repository
 - [x] github workflows
 - [x] build docker images (for static nginx site)
@@ -26,9 +43,9 @@
 - [ ] linode load balancer?
 - [ ] DNS for *.k8s.zk.io -> loadbalancer
 - [x] ingress controller + ingress resources for static site
-- [ ] let's encrypt ACME controller thing for ssl
-- [ ] redis rest service as a poc
-- [ ] k8s dashboard
+- [x] let's encrypt ACME controller thing for ssl
+- [x] redis rest service as a poc
+- [x] k8s dashboard
 
 - [ ] terraform
 - [ ] linode terraform provider
