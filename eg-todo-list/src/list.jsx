@@ -3,7 +3,7 @@ import { useCollection } from './use-record.js';
 import Item from './item.jsx';
 
 const List = () => {
-  const [list, { post }] = useCollection('https://rest.k8s.zk.io/dsx-test3/');
+  const [list, { post }] = useCollection(`${process.env.REST_SERVER}/dsx-test3/`);
 
   const add = () => {
     post({});
