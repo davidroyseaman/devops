@@ -11,11 +11,11 @@ metadata:
 spec:
   tls:
   - hosts:
-    - dash.k8s.zk.io
+    - replaced.by.deployment
     secretName: kubernetes-dashboard-tls-secret
   ingressClassName: nginx
   rules:
-  - host: dash.k8s.zk.io
+  - host: replaced.by.deployment
     http:
       paths:
       - path: "/"
