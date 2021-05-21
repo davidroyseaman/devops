@@ -18,7 +18,7 @@ env:
   DSXWAT: dsx
   DOCKER_REGISTRY_URL_PREFIX: ghcr.io/${{ github.repository_owner }}
   KUBECONFIG: kube_config.yaml
-  DOMAIN: k8s.zk.io
+  DOMAIN: k8s2.zk.io
 jobs:
   infrastructure:
     runs-on: ubuntu-latest
