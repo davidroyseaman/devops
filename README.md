@@ -32,7 +32,10 @@
 ## TODO list
 - [ ] Private packages (with/without PAT)
 - [ ] Switch ingress controllers
-- [ ] Make domain name easier to change
+- [x] Make domain name easier to change
+- [ ] Change random sleep to a kubernetes wait command (cert-manager/deploy)
+- [ ] Make sure no edits remain in downloaded yamls
+
 - [x] create repository
 - [x] github workflows
 - [x] build docker images (for static nginx site)
