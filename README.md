@@ -3,7 +3,8 @@
 1. Create a kubernetes cluster (linode/aws/gcloud/etc)
 2. Point a wildcard subdomain at it (single node/round-robin dns/loadbalancer)
 3. Copy the kubeconfig into a github secret
-4. (Make a read-packages PAT and copy that into a github secret)
+4. (Make a read-packages PAT and copy that into a github secret) 
+  a. https://github.com/settings/tokens
 5. Fork the repo
 6. Set the domain (dsx edit repo or github secret?
 7. Push and check
