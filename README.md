@@ -31,7 +31,7 @@
 - https://docs.github.com/en/free-pro-team@latest/packages/guides/using-github-packages-with-github-actions
 
 ## TODO list
-- [ ] Private packages (with/without PAT)
+- [x] Private packages (with/without PAT)
 - [ ] Switch ingress controllers
 - [x] Make domain name easier to change
 - [ ] Change random sleep to a kubernetes wait command (cert-manager/deploy)
