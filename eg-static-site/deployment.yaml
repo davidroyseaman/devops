@@ -19,7 +19,7 @@ spec:
         image: "replaced by deployment"
         resources:
           requests:
-            cpu: 100m
+            cpu: 10m
             memory: 100Mi
         ports:
         - containerPort: 80
