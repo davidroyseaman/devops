@@ -2,7 +2,7 @@
 
 ## Installation:
 (https://cert-manager.io/docs/installation/kubernetes/)
-Installation is done via cert-manager-v1.3.0.yml (downloaded from the above link)
+Installation is done via cert-manager-v1.3.1.yml (downloaded from the above link)
 This sets up a bunch of custom resource definitions, service accounts, cluster roles, etc. But also a few services/deployments that actually do the job of fetching certificates.
 
 If you're curious you can do a regex search for `^kind:` to jump to all the various things that get set up.

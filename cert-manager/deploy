@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-kubectl apply -f cert-manager-v1.3.0.yml
+kubectl apply -f cert-manager-v1.3.1.yml
 
 sleep 30 # dsx better to wait for resource ready
 
