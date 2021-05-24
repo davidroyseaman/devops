@@ -5,9 +5,9 @@ metadata:
   namespace: kubernetes-dashboard
   annotations:
     nginx.org/ssl-services: "kubernetes-dashboard"
-    cert-manager.io/cluster-issuer: letsencrypt-prod # dsx remove
-    cert-manager.io/issue-temporary-certificate: "true" # dsx remove
-    acme.cert-manager.io/http01-edit-in-place: "true" # dsx remove
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/issue-temporary-certificate: "true"
+    acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   tls:
   - hosts:
