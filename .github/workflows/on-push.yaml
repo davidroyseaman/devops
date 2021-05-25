@@ -74,13 +74,8 @@ jobs:
         env:
           KUBE_CONFIG: ${{secrets.KUBE_CONFIG}}
 
-      # - name: Test kubectl
-      #   working-directory: ${{ matrix.folder }}
-      #   run: 'kubectl get pods'
-
       - name: Create k8s imagePullSecrets
         working-directory: ${{ matrix.folder }}
-        # --docker-email=dsx@whatdo.dsx
         run: |
           kubectl create secret docker-registry ghcr-docker \
             --docker-server=ghcr.io \
