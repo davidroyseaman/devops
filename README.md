@@ -17,6 +17,7 @@ This is not a complete solution, and never will be. There are many things missin
 
 # Instructions (v1)
 
+0. In github: settings -> feature preview -> improved container support
 1. Create a kubernetes cluster (linode/aws/gcloud/etc)
 2. Point a wildcard subdomain at it (single node/round-robin dns/loadbalancer)
 3. (Make a read-packages PAT and copy that into a github secret) 

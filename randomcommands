@@ -29,3 +29,15 @@ kl get pods --all-namespaces
 kl -n kube-system logs calico-kube-controllers-67f4497596-gnn7l
 
 kl -n kube-system describe pod kube-proxy-q5tdl
+
+
+kl get certificate
+kl get certificaterequest
+kl get order
+kl get challenge
+
+
+kl describe certificate
+kl describe certificaterequest
+kl describe order
+kl describe challenge
