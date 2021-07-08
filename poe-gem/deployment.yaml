@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poe-gem-deployment
+  labels:
+    app: poe-gem
+spec:
+  selector:
+    matchLabels:
+      app: poe-gem
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: poe-gem
+    spec:
+      containers:
+      - name: poe-gem
+        image: "replaced by deployment"
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100Mi
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: ghcr-docker
