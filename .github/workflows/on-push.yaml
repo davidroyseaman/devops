@@ -65,7 +65,6 @@ jobs:
           - eg-rest-server
           # - eg-k8s-dashboard
           - eg-todo-list
-          - poe-gem
     steps:
       - uses: actions/checkout@v2
       - uses: chrisdickinson/setup-yq@latest
