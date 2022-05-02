@@ -1,1 +1,4 @@
 kl exec [podname] -it -- /bin/bash
+
+
+kl exec aliums3-deployment-5c46567c76-rv2xr   -it -- /bin/bash
