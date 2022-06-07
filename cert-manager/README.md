@@ -2,6 +2,7 @@
 
 ## Installation:
 (https://cert-manager.io/docs/installation/kubernetes/)
+(now https://cert-manager.io/docs/installation/kubectl/)
 Installation is done via cert-manager-v1.3.1.yml (downloaded from the above link)
 This sets up a bunch of custom resource definitions, service accounts, cluster roles, etc. But also a few services/deployments that actually do the job of fetching certificates.
 
