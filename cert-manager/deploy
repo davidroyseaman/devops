@@ -8,7 +8,12 @@ kubectl apply -f cert-manager-v1.8.0.yml
 
 # Need to wait for the CRDs to be created before we can start making issuers.
 # old kubectl wait -f cert-manager-v1.8.0.yml --for condition="established" --timeout=60s
-kubectl wait --for condition=established --timeout=60s crd/clusterissuers.cert-manager.io
+
+# more specific one doesn't work because webhook aren't ready
+# kubectl wait --for condition=established --timeout=60s crd/clusterissuers.cert-manager.io
+
+# This might not work:
+kubectl wait -f cert-manager-v1.8.0.yml --for condition=established --timeout=60s
 
 kubectl apply -f letsencrypt-staging.yaml
 
