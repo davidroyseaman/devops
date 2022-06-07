@@ -12,9 +12,9 @@ kubectl apply -f cert-manager-v1.8.0.yml
 
 # We need to wait for some resources. I wish I could use the -f format but it seems to hang.
 # CRDs to be able to create the resources:
-kubectl wait --for condition=established --timeout=60s customresourcedefinition.apiextensions.k8s.io/clusterissuers.cert-manager.io
+kubectl -n=cert-manager wait --for condition=established --timeout=60s customresourcedefinition.apiextensions.k8s.io/clusterissuers.cert-manager.io
 # Webhook because it seems that is needed by the resources to not error out
-kubectl wait --for condition=available --timeout=60s deployment.apps/cert-manager-webhook
+kubectl -n=cert-manager wait --for condition=available --timeout=60s deployment.apps/cert-manager-webhook
 
 kubectl apply -f letsencrypt-staging.yaml
 
