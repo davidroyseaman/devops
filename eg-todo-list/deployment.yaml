@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: eg-todo-list
-  replicas: 1
+  replicas: 0
   template:
     metadata:
       labels:
