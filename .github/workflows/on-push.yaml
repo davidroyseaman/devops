@@ -65,6 +65,7 @@ jobs:
           - eg-rest-server
           # - eg-k8s-dashboard
           - eg-todo-list
+          - mums-matariki
     steps:
       - uses: actions/checkout@v2
       - uses: chrisdickinson/setup-yq@latest
