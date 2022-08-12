@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zkio-redirect-deployment
+  labels:
+    app: zkio-redirect
+spec:
+  selector:
+    matchLabels:
+      app: zkio-redirect
+  replicas: 0
+  template:
+    metadata:
+      labels:
+        app: zkio-redirect
+    spec:
+      containers:
+      - name: zkio-redirect # ???
+        image: "replaced by deployment"
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100Mi
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: ghcr-docker
