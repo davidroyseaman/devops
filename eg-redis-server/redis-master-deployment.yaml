@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: master
-        image: redis
+        image: docker.io/redis:7
         resources:
           requests:
             cpu: 100m
