@@ -21,9 +21,29 @@ spec:
       containers:
       - name: master
         image: docker.io/redis:7
+        command:
+          - redis-server
+          - "/redis-master/redis.conf"
+        # env:
+        # - name: MASTER
+        #   value: "true"
         resources:
           requests:
             cpu: 100m
             memory: 200Mi
         ports:
         - containerPort: 6379
+        volumeMounts:
+        - mountPath: /redis-master-data
+          name: data
+        - mountPath: /redis-master
+          name: config
+      volumes:
+        - name: data
+          emptyDir: {}
+        - name: config
+          configMap:
+            name: redis-config
+            items:
+            - key: redis-config
+              path: redis.conf
