@@ -5,4 +5,8 @@ kl exec aliums3-deployment-5c46567c76-rv2xr   -it -- /bin/bash
 
 
 kl get pods --all-namespaces
-kl --n=nginx-ingress logs nginx-ingress-xrsgn 
+kl --n=nginx-ingress logs nginx-ingress-xrsgn
+
+
+# Poke around in redis
+kl exec -it redis-master-54464d4db4-5n7tq -- redis-cli
