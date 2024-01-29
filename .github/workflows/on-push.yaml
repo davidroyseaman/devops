@@ -67,6 +67,7 @@ jobs:
           - eg-todo-list
           - mums-matariki
           - zkio-redirect
+          - eccentricearthlearning
     steps:
       - uses: actions/checkout@v2
       - uses: chrisdickinson/setup-yq@latest

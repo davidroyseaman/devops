@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eccentricearthlearning-deployment
+  labels:
+    app: eccentricearthlearning
+spec:
+  selector:
+    matchLabels:
+      app: eccentricearthlearning
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: eccentricearthlearning
+    spec:
+      containers:
+      - name: eccentricearthlearning # ???
+        image: "replaced by deployment"
+        resources:
+          requests:
+            cpu: 10m
+            memory: 100Mi
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: ghcr-docker
