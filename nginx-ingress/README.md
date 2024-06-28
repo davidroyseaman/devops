@@ -9,3 +9,7 @@ decisions:
 
 2) Run as a daemonset (so a copy runs on every single node)
   (could instead run as a deployment. Requires you to create a service using nodeport/loadbalancer)
+
+
+# Last copied version:
+git clone https://github.com/nginxinc/kubernetes-ingress.git --branch v3.6.0 --depth 1

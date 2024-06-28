@@ -4,7 +4,7 @@
 # kubectl delete -f cert-manager-v1.3.1.yml
 # kubectl delete -f cert-manager-v1.8.0.yml
 
-kubectl apply -f cert-manager-v1.8.0.yml
+kubectl apply -f cert-manager-v1.15.1.yml
 
 # Need to wait for the CRDs to be created before we can start making issuers.
 # old kubectl wait -f cert-manager-v1.8.0.yml --for condition="established" --timeout=60s
