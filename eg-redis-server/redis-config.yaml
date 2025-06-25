@@ -4,5 +4,6 @@ metadata:
   name: redis-config
 data:
   redis-config: |
+    appendonly yes
     # maxmemory 2mb
     # maxmemory-policy allkeys-lru
