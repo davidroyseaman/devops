@@ -39,11 +39,20 @@ spec:
             - mountPath: /redis-master
               name: config
       volumes:
+        # Old ephemeral data
+        # - name: data
+        #   emptyDir: {}
+
+        # New pvc data
         - name: data
-          emptyDir: {}
-        - name: test-pvc
           persistentVolumeClaim:
             claimName: pvc-redis
+
+        # Testing
+        # - name: test-pvc
+        #   persistentVolumeClaim:
+        #     claimName: pvc-redis
+
         - name: config
           configMap:
             name: redis-config
