@@ -19,7 +19,7 @@ cat deployment.yaml \
 cat service.yaml \
 | kubectl apply -f -
 
-cat ingress.yaml \
-| yq w - "spec.tls[0].hosts[0]" $SUBDOMAIN \
-| yq w - "spec.rules[0].host" $SUBDOMAIN \
-| kubectl apply -f -
+# cat ingress.yaml \
+# | yq w - "spec.tls[0].hosts[0]" $SUBDOMAIN \
+# | yq w - "spec.rules[0].host" $SUBDOMAIN \
+# | kubectl apply -f -

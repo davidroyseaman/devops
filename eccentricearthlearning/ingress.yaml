@@ -12,18 +12,18 @@ metadata:
     acme.cert-manager.io/http01-edit-in-place: "true"
 spec:
   tls:
-  - hosts:
-    - replaced.by.deployment
-    secretName: eccentricearthlearning-tls-secret
+    - hosts:
+        - eccentricearthlearning.com
+      secretName: eccentricearthlearning-tls-secret
   ingressClassName: nginx
   rules:
-  - host: replaced.by.deployment
-    http:
-      paths:
-      - path: "/"
-        pathType: Prefix
-        backend:
-          service:
-            name: eccentricearthlearning-service
-            port:
-              number: 80
+    - host: eccentricearthlearning.com
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: eccentricearthlearning-service
+                port:
+                  number: 80
