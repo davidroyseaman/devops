@@ -27,13 +27,15 @@ This is not a complete solution, and never will be. There are many things missin
 3. (Make a read-packages PAT and copy that into a github secret)
    link: https://github.com/settings/tokens
 4. Fork the repo
-5. Copy the kubeconfig into a github secret
+5. Go to repo settings -> actions -> general -> workflow permissions section.
+   Set to read/write and allow PR creation
+6. Copy the kubeconfig into a github secret
    link: https://github.com/username/repo/settings/secrets/actions
 
-6. Set the domain (dsx edit repo or github secret?
-7. Push and check
-8. Switch to letsencrypt prod for real certs
-9. Push and check
+7. Set the domain (dsx edit repo or github secret?
+8. Push and check
+9. Switch to letsencrypt prod for real certs
+10. Push and check
 
 # Where to go from here
 
