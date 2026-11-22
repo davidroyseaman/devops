@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# kubectl apply -f pvc.yaml
+
+# kubectl apply -f redis-config.yaml
+
+# kubectl apply -f datastore-stateful-set.yaml
+
+# kubectl apply -f datastore-service.yaml
+
+# kubectl apply -f redis-service.yaml
+
+# kubectl apply -f postgres-service.yaml
